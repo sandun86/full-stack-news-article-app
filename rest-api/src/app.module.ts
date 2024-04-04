@@ -7,6 +7,7 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
 import { NewsArticlesModule } from './news-articles/news-articles.module';
 import { ReferrerPolicyMiddleware } from './middleware/referrer-policy.middleware';
 
+// Do not use the `synchronize: true` in production. better to use a migrations tool with docker
 @Module({
   imports: [
     ConfigModule.forRoot(),
