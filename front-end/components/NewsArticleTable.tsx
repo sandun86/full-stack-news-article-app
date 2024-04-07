@@ -16,7 +16,7 @@ interface NewsArticle {
   publication_date: Date;
 }
 
-const NewsArticleTable: React.FC<TableProps> = ({ articles }) => {
+const NewsArticleTable: React.FC<TableProps> = ({ articles }: TableProps) => {
   return (
     <>
       <h1>News articles List</h1>
