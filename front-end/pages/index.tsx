@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import axios from "../utils/axios";
 import CustomPagination from "../components/Pagination";
 import NewsArticleTable from "../components/NewsArticleTable";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import Head from "next/head";
+import { getNewsArticles } from "./api/api";
 
 const Home = () => {
   const [newsArticles, setData] = useState([]);
@@ -19,11 +19,9 @@ const Home = () => {
 
   const fetchNewsArticles = async () => {
     try {
-      const response = await axios.get(
-        `/news-articles?page=${currentPage}`
-      );
-      setData(response.data.data);
-      setTotalPages(Math.ceil(response.data.totalPages));
+      const newsArticles = await getNewsArticles(currentPage);
+      setData(newsArticles.data.data);
+      setTotalPages(Math.ceil(newsArticles.data.totalPages));
       setLoading(false);
     } catch (error) {
       setData([]);
